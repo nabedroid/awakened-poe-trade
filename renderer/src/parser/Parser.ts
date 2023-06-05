@@ -71,6 +71,7 @@ const parsers: Array<ParserFn | { virtual: VirtualParserFn }> = [
 ]
 
 export function parseClipboard (clipboard: string) {
+  console.log("[Parser#parseClipboard]start")
   const lines = clipboard.split(/\r?\n/)
   lines.pop()
 
@@ -85,7 +86,9 @@ export function parseClipboard (clipboard: string) {
       return section
     }
   }, sections[0])
+  console.log("[Parser#parseClipboard]sections=", JSON.stringify(sections, null, '  '))
   sections = sections.filter(section => section.length)
+  console.log("[Parser#parseClipboard]sections(filtered)=", JSON.stringify(sections, null, '  '))
 
   if (sections[0][2] === _$.CANNOT_USE_ITEM) {
     sections[0].pop() // remove CANNOT_USE_ITEM line
@@ -93,6 +96,7 @@ export function parseClipboard (clipboard: string) {
     sections.shift() // remove first section where CANNOT_USE_ITEM line was
   }
   const parsed = parseNamePlate(sections[0])
+  console.log("[Parser#parseClipboard]parsed=", JSON.stringify(parsed, null, '  '))
   if (!parsed) {
     return null
   }

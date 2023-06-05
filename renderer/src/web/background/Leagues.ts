@@ -53,6 +53,7 @@ export const useLeagues = createGlobalState(() => {
 
     try {
       const response = await Host.proxy(`${poeWebApi()}/api/leagues?type=main&realm=pc`)
+      console.log(response)
       if (!response.ok) throw new Error(JSON.stringify(Object.fromEntries(response.headers)))
       const leagues: ApiLeague[] = await response.json()
       tradeLeagues.value = leagues

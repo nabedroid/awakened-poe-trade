@@ -25,3 +25,26 @@ Follow instructions similar to CI [.github/workflows/main.yml](https://github.co
 - [poe.ninja](https://poe.ninja/)
 
 ![](https://i.imgur.com/MATqhv7.png)
+
+***
+
+# 修正内容
+- 日本語で動作するよう修正
+  - items.ndjson を追加
+  - stats.ndjson を追加
+  - app_i18n.json を追加
+  - client_strings.js を追加
+
+# 懸念点
+- 進捗率50%
+- テスト未実施
+- stats.ndjson の作り込みが甘い
+  - オリジナルファイルにあった項目（fromHeistAreaMods とか dp とか）を完全無視してる
+    - ツールからトレード検索する時に使えない検索項目や挙動が怪しい検索項目があると思う
+
+# TODO
+- stats.ndjson の解析
+  - content.ggpk の解析
+    - descriptions.txt以外に翻訳に使えるファイルないか確認
+- 日本語表記でレイアウトが崩れている個所の修正
+- tsファイル内で言語依存の処理してないか確認
